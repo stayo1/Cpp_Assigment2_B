@@ -162,10 +162,12 @@ void Game ::printStats()
 void Game ::DealCards(Player p, int AllCards[13][4])
 {
     bool getcard = false;
-    int numcard = random() % 13;
-    int kindcard = random() % 4;
-    while (getcard)
+    int numcard;
+    int kindcard;
+    while (!getcard)
     {
+        numcard = random() % 14;
+        kindcard = random() % 4;
         if (AllCards[numcard][kindcard] != 0)
         {
             if (kindcard == Hearts)
@@ -188,15 +190,10 @@ void Game ::DealCards(Player p, int AllCards[13][4])
                 p.pushCard(numcard, "Spades");
                 cout << "44444444444" << endl;
             }
+            AllCards[numcard][kindcard] = 0;
             getcard = true;
-            AllCards[numcard][kindcard]--;
             cout << "ifffff" << endl;
         }
-        else
-        {
-            int numcard = 1 + random() % 13;
-            int kindcard = 1 + random() % 4;
-            cout << "elseeeeee" << endl;
-        }
+       
     }
 }
